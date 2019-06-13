@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { ListView, INITIAL_LIST } from "./list-view";
-import "./index.css";
+import ListView, { INITIAL_LIST } from "./list-view";
 
 import * as serviceWorker from "./serviceWorker";
 

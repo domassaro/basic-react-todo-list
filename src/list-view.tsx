@@ -3,15 +3,53 @@ import uuid from "uuid";
 import { Toggle } from "./toggle";
 import { EditItem } from "./edit-item";
 import { add, update, remove } from "./utils";
+import manageJss, { ComponentStyles } from "@microsoft/fast-jss-manager-react";
 
-// creates a skeleton that indicicates using a mandatory completed, id (imported method to assign id), and task 
+/*------------
+  JSS STYLES
+-------------*/
+
+interface IClassNameContract {
+  form: string;
+  input: string;
+  list: string;
+  tray: string;
+}
+
+const styles: ComponentStyles<IClassNameContract, any> = {
+  form: {
+    margin: "0",
+    width: "800px",
+    height: "600px",
+    backgroundColor: "blue"
+  },
+  input: {
+    width: "800px",
+    height: "600px",
+    backgroundColor: "blue"
+  },
+  list: {
+    width: "100vw",
+    height: "100vh",
+    color: "red",
+    backgroundColor: "blue",
+  },
+  tray: {
+    width: "100vw",
+    height: "100vh",
+    color: "red",
+    backgroundColor: "blue",
+  }
+};
+
+// Creates a skeleton that indicicates using a mandatory completed, id (imported method to assign id), and task 
 export interface TodoItem {
   completed: boolean;
   id: string;
   task: string;
 }
 
-// creates two initial tasks that are already on the list, one to get lunch and one to check flight 
+// Creates two initial tasks that are already on the list, one to get lunch and one to check flight 
 export const INITIAL_LIST: TodoItem[] = [
   {
     id: uuid(),
@@ -25,8 +63,13 @@ export const INITIAL_LIST: TodoItem[] = [
   }
 ];
 
-interface ListViewProps {
+/*----------------
+  PROPS & STATES
+-----------------*/
+
+interface IListViewProps {
   initialTasks: TodoItem[];
+  managedClasses: IClassNameContract;
 }
 
 interface IListState {
@@ -35,8 +78,8 @@ interface IListState {
   // why can't I make this value?:
 }
 
-export class ListView extends React.Component<ListViewProps, IListState> {
-  constructor(props: ListViewProps) {
+class ListView extends React.Component<IListViewProps, IListState> {
+  constructor(props: IListViewProps) {
     super(props);
     this.state = {
       tasks: props.initialTasks || [],
@@ -96,16 +139,20 @@ export class ListView extends React.Component<ListViewProps, IListState> {
     });
   };
 
+  /*--------------
+    REACT RENDER
+  ---------------*/
 
-  render() {
+  public render(): JSX.Element {
+    const { managedClasses }: Partial<IListViewProps> = this.props;
     let tasks = this.state.tasks;
     return (
       <>
-        <form className="Form" onSubmit={this.handleSubmit}>
-          <input className="Input"
+        <form className={this.props.managedClasses.form} onSubmit={this.handleSubmit}>
+          <input className="input"
             value={this.state.value}
             onChange={this.handleChange} />
-          <div className="Tray">
+          <div className={this.props.managedClasses!.tray}>
             <button className="Button" type="submit">
               Submit
             </button>
@@ -167,3 +214,5 @@ export class ListView extends React.Component<ListViewProps, IListState> {
     );
   }
 }
+
+export default manageJss(styles)(ListView);
