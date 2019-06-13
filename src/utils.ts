@@ -1,4 +1,4 @@
-import { TodoItem } from "./list-view";
+import { TodoItem } from "./components/list-view";
 
 export function add<T extends TodoItem>(item: T, items: T[]): T[] {
   if (item) {
