@@ -32,12 +32,12 @@ const styles: ComponentStyles<IClassNameContract, any> = {
     marginBottom: "1rem",
     display: "block",
     borderRadius: "0.25rem",
-    border: "1px solid rgba(30, 184, 235, 0.35)",
+    border: "1px solid rgba(114, 220, 159, 0.31)",
     resize: "none",
     width: "100%",
     font: "inherit",
-    color: "white",
-    background: "#063651",
+    color: "black",
+    background: "white",
     transition: "border-color 375ms ease-in-out",
   },
   list: {
@@ -47,8 +47,10 @@ const styles: ComponentStyles<IClassNameContract, any> = {
     marginBottom: "16px",
   },
   button: {
-    background: "var(--yellow)",
-    color: "#092e41",
+    letterSpacing: "1px",
+    textTransform: "uppercase",
+    background: "#01b74f",
+    color: "white",
     border: "0",
     padding: "0.75rem 1rem",
     borderRadius: "0.5rem",
@@ -64,27 +66,32 @@ const styles: ComponentStyles<IClassNameContract, any> = {
     }
   },
   actionButton: {
-    padding: "4px",
+    padding: "5px",
     background: "none",
     fontWeight: "700",
     border: "0",
+    height: "100%",
     color: "white",
   },
   inlineActions: {
     width: "18.75%",
+    height: "100%",
     display: "flex",
   },
   listItem: {
     padding: "12px 0",
+    minHeight: "50px",
     "&:not(:last-of-type)": {
-      borderBottom: "1px solid rgba(30, 184, 235, 0.35)"
+      borderBottom: "1px solid rgba(114, 220, 159, 0.31)"
     },
   },
   strike: {
     textDecoration: "line-through",
   },
   toDo: {
+    alignItems: "center",
     display: "flex",
+    minHeight: "25px",
   },
   inlineContent: {
     width: "calc(100% - 18.75% - 20px)",

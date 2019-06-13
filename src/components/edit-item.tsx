@@ -9,6 +9,7 @@ import manageJss, { ComponentStyles } from "@microsoft/fast-jss-manager-react";
 interface IClassNameContract {
   inlineForm: string;
   inlineInput: string,
+  button: string,
 }
 
 const styles: ComponentStyles<IClassNameContract, any> = {
@@ -18,8 +19,28 @@ const styles: ComponentStyles<IClassNameContract, any> = {
   },
   inlineInput: {
     flex: "1",
+    display: "inline-block",
+    padding: "4px",
+    height: "100%",
+    border: "1px solid rgba(114, 220, 159, 0.31)",
+    resize: "none",
+    font: "inherit"
+  },
+  button: {
+    letterSpacing: "1px",
+    textTransform: "uppercase",
+    background: "#01b74f",
+    color: "white",
+    border: "0",
+    padding: "0.25rem .5rem",
+    appearance: "none",
+    fontWeight: "900",
+    transition: "background-color 375ms ease-in-out",
     display: "block",
-    padding: "2px"
+    marginLeft: "auto",
+    "&:hover": {
+      background: "#e29c00",
+    }
   },
 }
 
@@ -67,7 +88,7 @@ class EditItem extends React.Component<IEditProps, IEditState> {
     return (
       <form className={this.props.managedClasses.inlineForm} onSubmit={handleSubmit}>
         <input className={this.props.managedClasses.inlineInput} value={value} onChange={handleChange} />
-        <button type="submit">Submit</button>
+        <button type="submit" className={this.props.managedClasses.button}>Submit</button>
       </form>
     );
   }

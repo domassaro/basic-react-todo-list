@@ -15,10 +15,16 @@ const styles: ComponentStyles<IClassNameContract, any> = {
   "@global": {
     html: {
       boxSizing: "border-box",
-      background: "#092e41",
+      background: "#7acc9d75",
       font: "400 100%/1.6 var(--ss)",
-      color: "#b3dbee",
+      color: "#00b74f",
+      textTransform: "uppercase",
+      fontWeight: "bold",
+      letterSpacing: "1px",
       "-webkit-font-smoothing": "antialiased",
+    },
+    code: {
+      fontFamily: "source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace",
     },
     body: {
       margin: "0",
@@ -37,15 +43,18 @@ const styles: ComponentStyles<IClassNameContract, any> = {
       "--yellow": "#ffba00",
     },
     h1: {
+      letterSpacing: "1.2px",
+      textAlign: "center",
+      textTransform: "uppercase",
       fontWeight: "900",
-      fontSize: "300%",
+      fontSize: "7vw",
       marginBottom: "32px",
     }
   },
   container: {
-    margin: "12rem auto 1rem",
+    margin: "3rem auto",
     padding: "8px",
-    maxWidth: "38rem"
+    maxWidth: "40rem"
   },
 }
 
