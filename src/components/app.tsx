@@ -23,6 +23,11 @@ const styles: ComponentStyles<IClassNameContract, any> = {
       letterSpacing: "1px",
       "-webkit-font-smoothing": "antialiased",
     },
+    button: {
+      "&:focus": {
+        outline: "0",
+      }
+    },
     code: {
       fontFamily: "source-code-pro, Menlo, Monaco, Consolas, Courier New, monospace",
     },

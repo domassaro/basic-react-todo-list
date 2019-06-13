@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import ListView, { INITIAL_LIST } from "./components/list-view";
+import ListView, { INITIAL_LIST } from "../components/list-view";
 
 it("renders without crashing", () => {
   const div = document.createElement("div");

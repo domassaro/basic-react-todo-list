@@ -1,6 +1,6 @@
 import * as React from "react";
 import uuid from "uuid";
-import { Toggle } from "../toggle";
+import { Toggle } from "./toggle";
 import EditItem from "./edit-item";
 import { add, update, remove } from "../utils";
 import manageJss, { ComponentStyles } from "@microsoft/fast-jss-manager-react";
@@ -84,9 +84,8 @@ const styles: ComponentStyles<IClassNameContract, any> = {
 
   },
   inlineActions: {
-    width: "18.75%",
     height: "100%",
-    display: "flex",
+    display: "flex"
   },
   listItem: {
     padding: "12px 0",
@@ -104,7 +103,8 @@ const styles: ComponentStyles<IClassNameContract, any> = {
     minHeight: "25px",
   },
   inlineContent: {
-    width: "calc(100% - 18.75% - 20px)",
+    margin: "0px 15px ",
+    width: "calc(100% - 20px)"
   }
 };
 
@@ -230,13 +230,13 @@ class ListView extends React.Component<IListViewProps, IListState> {
                 <Toggle>
                   {({ open, onToggle }) => (
                     <div className={this.props.managedClasses.toDo}>
-                      <button
+                      {!t.completed && <button
                         className={this.props.managedClasses.actionButton}
                         disabled={t.completed}
                         onClick={onToggle}
                       >
                         Edit
-                      </button>
+                      </button>}
 
                       <div className={this.props.managedClasses.inlineContent}>
                         {open ? (
