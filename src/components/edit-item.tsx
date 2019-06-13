@@ -33,25 +33,37 @@ interface IEditProps {
   managedClasses: IClassNameContract;
 }
 
-class EditItem extends React.Component<IEditProps> {
+interface IEditState {
+  value: string;
+}
+
+class EditItem extends React.Component<IEditProps, IEditState> {
   /*-------------
     CONSTRUCTOR
   --------------*/
   constructor(props: IEditProps) {
     super(props);
+    this.state = {
+      value: this.props.item.task,
+    };
   }
   public render(): JSX.Element {
-    const { managedClasses }: Partial<IEditProps> = this.props;
-    const [value, setValue] = React.useState(this.props.item.task);
+    let value = this.state.value;
+
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setValue(event.target.value);
+      this.setState({
+        value: event.target.value,
+      });
     };
 
     const handleSubmit = (event: React.FormEvent) => {
       event.preventDefault();
-      this.props.onUpdate({ ...this.props.item, task: value });
+      this.props.onUpdate({
+        ...this.props.item, task: value
+      });
       this.props.onDone();
     };
+
     return (
       <form className={this.props.managedClasses.inlineForm} onSubmit={handleSubmit}>
         <input className={this.props.managedClasses.inlineInput} value={value} onChange={handleChange} />

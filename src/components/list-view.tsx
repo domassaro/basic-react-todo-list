@@ -46,10 +46,22 @@ const styles: ComponentStyles<IClassNameContract, any> = {
   tray: {
     marginBottom: "16px",
   },
-  // tray > button
   button: {
+    background: "var(--yellow)",
+    color: "#092e41",
+    border: "0",
+    padding: "0.75rem 1rem",
+    borderRadius: "0.5rem",
+    fontSize: "1rem",
+    lineHeight: "1rem",
+    appearance: "none",
+    fontWeight: "900",
+    transition: "background-color 375ms ease-in-out",
     display: "block",
     marginLeft: "auto",
+    "&:hover": {
+      background: "#e29c00",
+    }
   },
   actionButton: {
     padding: "4px",
@@ -181,7 +193,6 @@ class ListView extends React.Component<IListViewProps, IListState> {
   ---------------*/
 
   public render(): JSX.Element {
-    const { managedClasses }: Partial<IListViewProps> = this.props;
     let tasks = this.state.tasks;
     return (
       <>
