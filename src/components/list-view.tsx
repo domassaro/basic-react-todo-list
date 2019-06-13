@@ -1,7 +1,7 @@
 import * as React from "react";
 import uuid from "uuid";
 import { Toggle } from "../toggle";
-import { EditItem } from "./edit-item";
+import EditItem from "./edit-item";
 import { add, update, remove } from "../utils";
 import manageJss, { ComponentStyles } from "@microsoft/fast-jss-manager-react";
 

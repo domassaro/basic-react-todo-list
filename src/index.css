@@ -56,17 +56,6 @@ html {
   background: #e29c00;
 }
 
-.InlineForm {
-  width: 100%;
-  display: flex;
-}
-
-.InlineInput {
-  flex: 1;
-  display: block;
-  padding: 2px;
-}
-
 .InlineActions > * + * {
   margin-left: 8px;
 }
