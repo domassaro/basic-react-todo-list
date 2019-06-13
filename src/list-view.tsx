@@ -14,31 +14,68 @@ interface IClassNameContract {
   input: string;
   list: string;
   tray: string;
+  button: string;
+  actionButton: string;
+  inlineActions: string;
+  listItem: string;
+  strike: string;
+  toDo: string;
+  inlineContent: string;
 }
 
 const styles: ComponentStyles<IClassNameContract, any> = {
   form: {
-    margin: "0",
-    width: "800px",
-    height: "600px",
-    backgroundColor: "blue"
+    width: "100%",
   },
   input: {
-    width: "800px",
-    height: "600px",
-    backgroundColor: "blue"
+    padding: "8px",
+    marginBottom: "1rem",
+    display: "block",
+    borderRadius: "0.25rem",
+    border: "1px solid rgba(30, 184, 235, 0.35)",
+    resize: "none",
+    width: "100%",
+    font: "inherit",
+    color: "white",
+    background: "#063651",
+    transition: "border-color 375ms ease-in-out",
   },
   list: {
-    width: "100vw",
-    height: "100vh",
-    color: "red",
-    backgroundColor: "blue",
+    listStyle: "none inside",
   },
   tray: {
-    width: "100vw",
-    height: "100vh",
-    color: "red",
-    backgroundColor: "blue",
+    marginBottom: "16px",
+  },
+  // tray > button
+  button: {
+    display: "block",
+    marginLeft: "auto",
+  },
+  actionButton: {
+    padding: "4px",
+    background: "none",
+    fontWeight: "700",
+    border: "0",
+    color: "white",
+  },
+  inlineActions: {
+    width: "18.75%",
+    display: "flex",
+  },
+  listItem: {
+    padding: "12px 0",
+    "&:not(:last-of-type)": {
+      borderBottom: "1px solid rgba(30, 184, 235, 0.35)"
+    },
+  },
+  strike: {
+    textDecoration: "line-through",
+  },
+  toDo: {
+    display: "flex",
+  },
+  inlineContent: {
+    width: "calc(100% - 18.75% - 20px)",
   }
 };
 
@@ -149,31 +186,31 @@ class ListView extends React.Component<IListViewProps, IListState> {
     return (
       <>
         <form className={this.props.managedClasses.form} onSubmit={this.handleSubmit}>
-          <input className="input"
+          <input className={this.props.managedClasses.input}
             value={this.state.value}
             onChange={this.handleChange} />
-          <div className={this.props.managedClasses!.tray}>
-            <button className="Button" type="submit">
+          <div className={this.props.managedClasses.tray}>
+            <button className={this.props.managedClasses.button} type="submit">
               Submit
             </button>
           </div>
         </form>
-        <ul className="List">
+        <ul className={this.props.managedClasses.list}>
           {tasks.length > 0 &&
             tasks.map(t => (
-              <li key={t.id} className="ListItem">
+              <li key={t.id} className={this.props.managedClasses.listItem}>
                 <Toggle>
                   {({ open, onToggle }) => (
-                    <div className="Todo">
+                    <div className={this.props.managedClasses.toDo}>
                       <button
-                        className="ActionButton"
+                        className={this.props.managedClasses.actionButton}
                         disabled={t.completed}
                         onClick={onToggle}
                       >
                         Edit
                       </button>
 
-                      <div className="InlineContent">
+                      <div className={this.props.managedClasses.inlineContent}>
                         {open ? (
                           <EditItem
                             item={t}
@@ -183,22 +220,22 @@ class ListView extends React.Component<IListViewProps, IListState> {
                         ) : t.completed ? (
                           <span>
                             <b>Completed!</b>{" "}
-                            <span className="strike">{t.task}</span>
+                            <span className={this.props.managedClasses.strike}>{t.task}</span>
                           </span>
                         ) : (
                               <span>{t.task}</span>
                             )}
                       </div>
 
-                      <div className="InlineActions">
+                      <div className={this.props.managedClasses.inlineActions}>
                         <button
-                          className="ActionButton"
+                          className={this.props.managedClasses.actionButton}
                           onClick={() => this.handleRemove(t)}
                         >
                           Delete
                         </button>
                         <button
-                          className="ActionButton"
+                          className={this.props.managedClasses.actionButton}
                           onClick={() => this.markAsComplete(t)}
                         >
                           {t.completed ? "Undo" : "Complete"}
