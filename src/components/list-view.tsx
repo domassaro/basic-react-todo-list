@@ -67,11 +67,21 @@ const styles: ComponentStyles<IClassNameContract, any> = {
   },
   actionButton: {
     padding: "5px",
+    letterSpacing: "1px",
     background: "none",
-    fontWeight: "700",
+    fontWeight: "bold",
     border: "0",
+    fontStyle: "italic",
     height: "100%",
+    position: "relative",
     color: "white",
+    textDecoration: "none",
+    "&:hover": {
+      "-webkit-transition": "all 0.3s ease-in-out 0s",
+      transition: "all 0.3s ease-in-out 0s",
+      borderBottom: "1px #01b74f solid",
+    },
+
   },
   inlineActions: {
     width: "18.75%",
@@ -82,7 +92,7 @@ const styles: ComponentStyles<IClassNameContract, any> = {
     padding: "12px 0",
     minHeight: "50px",
     "&:not(:last-of-type)": {
-      borderBottom: "1px solid rgba(114, 220, 159, 0.31)"
+      borderBottom: "1px solid #00b74f40;"
     },
   },
   strike: {
